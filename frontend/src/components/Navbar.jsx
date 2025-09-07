@@ -39,9 +39,11 @@ const Navbar = () => {
 
   
   <div className="absolute top-0 right-0 pt-14 text-base font-small text-gray-400 z-20 hidden group-hover:block">
-    <p className="px-4 py-2 hover:bg-gray-100">My Profile</p>
-    <p className="px-4 py-2 hover:bg-gray-100">My Appointment</p>
-    <p className="px-4 py-2 hover:bg-gray-100">Logout</p>
+    <div className='min-w-47 bg-stone-100 rounded flex flex-col gap-4 p-4'>
+    <p onClick={()=>navigate('/my-profile')} className="hover:text-black cursor-pointer">My Profile</p>
+    <p onClick={()=>navigate('/my-appointments')} className="hover:text-black cursor-pointer">My Appointment</p>
+    <p onClick={()=>setToken(false)} className="hover:text-black cursor-pointer">Logout</p>
+    </div>
   </div>
 </div>
 
