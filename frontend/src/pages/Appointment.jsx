@@ -2,6 +2,7 @@ import React, { useContext,useState,useEffect } from 'react'
 import {useParams} from 'react-router-dom'
 import {AppContext} from '../context/AppContext'
 import { assets } from '../assets/assets';
+import RelatedDoctors from '../components/RelatedDoctors';
 const Appointment = () => {
   const {docId}=useParams();
   const {doctors,currencySymbol}=useContext(AppContext)
@@ -112,7 +113,7 @@ const Appointment = () => {
           }
         </div>
 
-        <div className='flex py -3 items-center gap-3 w-full gap-3 overflow-x-scroll'>
+        <div className='flex py-3 items-center gap-3 w-full gap-3 overflow-x-scroll'>
           {docslots.length > 0 && docslots[slotIndex].map((item,index)=>{
      return (
        <p onClick={()=>setSlotTime(item.time)} className={`text-sm font-light flex-shrink-0 px-5 py-3 rounded-full cursor-pointer ${item.time===slotTime ? 'bg-blue-600 text-white':'border border-gray-200'}`} key={index}>
@@ -121,8 +122,11 @@ const Appointment = () => {
      )
   })}
         </div>
+        <button className='bg-blue-600 text-white text-sm font-light px-14 py-3 rounded-full '>Book An appointment</button>
       </div>
-
+    
+    {/* {listing related doctor} */}
+    <RelatedDoctors docId={docId} speciality={docInfo.speciality}/>
     </div>
   )
 }
